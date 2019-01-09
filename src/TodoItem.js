@@ -1,8 +1,10 @@
 import React from "react";
 
+import "./App.css";
+
 function TodoItem() {
   return (
-    <div>
+    <div className="todo-item">
       <input type="checkbox" />
       <p>Placeholder text here</p>
     </div>
