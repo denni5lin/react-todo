@@ -10,10 +10,26 @@ class App extends Component {
     this.state = {
       todos: todosData
     };
+    this.handleChange = this.handleChange.bind(this);
   }
+
+  handleChange(id) {
+    this.setState(preData => {
+      const newTodoData = preData.todos.map(todo => {
+        if (todo.id === id) {
+          todo.completed = !todo.completed;
+        }
+        return todo;
+      });
+      return {
+        todos: newTodoData
+      };
+    });
+  }
+
   render() {
     const todoList = this.state.todos.map(item => (
-      <TodoItem key={item.key} item={item} />
+      <TodoItem key={item.key} item={item} handleChange={this.handleChange} />
     ));
 
     return <div className="todo-list">{todoList}</div>;
